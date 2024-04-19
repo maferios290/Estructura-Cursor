@@ -1,0 +1,20 @@
+delimiter //
+CREATE PROCEDURE listaSucursales()
+BEGIN
+	DECLARE nombre VARCHAR(100);
+    DECLARE direccion VARCHAR(100);
+    
+    DECLARE SucursalCursor
+		CURSOR FOR
+			SELECT nombre, direccion FROM sucursal;
+    OPEN sucursalCursor;
+    sucursal_loop: LOOP
+		FETCH sucursalCursor INTO nombre, direccion;
+        IF done THEN 
+			LEAVE sucursal_loop;
+		END IF;
+        
+        SELECT nombre, dirección;
+	END LOOP SucursalCursor;
+    CLOSE SucursalCursor;
+end //
